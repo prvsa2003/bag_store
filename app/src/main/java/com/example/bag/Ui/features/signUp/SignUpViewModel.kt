@@ -6,9 +6,10 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bag.Ui.MainActivity
+import com.example.bag.model.repository.User.UserRepository
 import kotlin.coroutines.coroutineContext
 
-class SignUpViewModel :ViewModel(){
+class SignUpViewModel(private val userRepository: UserRepository) :ViewModel(){
     val name = MutableLiveData("")
     val email = MutableLiveData("")
     val password = MutableLiveData("")

@@ -2,7 +2,9 @@ package com.example.bag.model.net
 
 import com.example.bag.model.data.LoginResponse
 import com.google.gson.JsonObject
+import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -11,4 +13,7 @@ interface ApiService {
 
     @POST("signIn")
     suspend fun SignIn(@Body jsonObject: JsonObject): LoginResponse
+
+    @GET("refreshToken")
+    fun refreshtoken(): Call<LoginResponse>
 }
