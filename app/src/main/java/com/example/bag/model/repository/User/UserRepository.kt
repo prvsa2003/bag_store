@@ -1,9 +1,9 @@
-package com.example.bag.model.repository
+package com.example.bag.model.repository.User
 
 interface UserRepository {
     //online
-    suspend fun SinUp(name : String , username : String , password : String)
-    suspend fun SinIn(username : String , password : String)
+    suspend fun SinUp(name : String , username : String , password : String):String
+    suspend fun SinIn(username : String , password : String):String
 
     //offline
     fun SignOut()
