@@ -12,19 +12,22 @@ import org.koin.core.component.inject
 
 
 class AuthChecker: Authenticator , KoinComponent {
-    private val apiService : ApiService by inject()
+    private val apiService: ApiService by inject()
     override fun authenticate(route: Route?, response: Response): Request? {
-        if(TokenInMemory.token!=null&& !response.request.url.pathSegments.last().equals("refreshToken" , false)){
+        if (TokenInMemory.token != null && !response.request.url.pathSegments.last()
+                .equals("refreshToken", false)
+        ) {
             val result = refreshtoken()
-            if (result){
+            if (result) {
                 //moshkel az refresh bode
                 //moshkel hal shodes!
                 return response.request
             }
-            return null
-        }
 
+        }
+        return null
     }
+
 
     private fun refreshtoken():Boolean{
         val request:retrofit2.Response<LoginResponse> = apiService.refreshtoken().execute()
