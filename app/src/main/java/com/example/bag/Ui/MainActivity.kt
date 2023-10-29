@@ -24,13 +24,18 @@ import com.example.bag.Util.MyScreens
 import com.example.bag.di.myMadouls
 import dev.burnoo.cokoin.Koin
 import dev.burnoo.cokoin.navigation.KoinNavHost
+import org.koin.android.ext.koin.androidContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
-            Koin(appDeclaration = { modules(myMadouls ) }){
+            Koin(appDeclaration = {
+                androidContext(this@MainActivity)
+                modules(myMadouls )
+
+            }){
                 BagTheme {
                     Surface(
                         color = BackgroundMain ,
